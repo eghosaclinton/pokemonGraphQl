@@ -9,15 +9,29 @@ type PokemonType = {
           special: {
             name: string,
             damage: number
-          }
+          }[]
         }
     }
 }
 
 export default function Pokemon({pokemon}: PokemonType){
     return (
-        <div>
-            {pokemon.name}
+        <div className="pokemon">
+            <div className="pokemon--name">
+                <h3 className="bruh">{pokemon.name}</h3>
+            </div>
+            <div className="pokemon--meta">
+                <span>{pokemon.maxHP}</span>
+                <span>{pokemon.maxCP}</span>
+            </div>
+            <div className="pokemon--img">
+                <img src={pokemon.image} alt="" />
+            </div>
+            <div className="pokemon--attacks">
+                {pokemon.attacks.special.slice(0, 3).map(attack=>{
+                    return <span key={`${attack.name}--${attack.damage}`}>{attack.name}</span>
+                })}
+            </div>
         </div>
     );
 }

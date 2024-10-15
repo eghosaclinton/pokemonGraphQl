@@ -6,7 +6,7 @@ export default function PokemonContainer(){
     const { data, loading, error } = useGetPokemons();
 
     return (
-        <div>
+        <div className="container">
             { data ? data.pokemons.map(pokemon=>{
                 return (<Pokemon key={pokemon.id} pokemon={pokemon} />)
             }): (<h1>Loading...</h1>) }
