@@ -25,7 +25,7 @@ export default function Pokemon({pokemon}: PokemonType){
                 <span>{pokemon.maxCP}</span>
             </div>
             <div className="pokemon--img">
-                <img src={pokemon.image} alt="" />
+                <img src={pokemon.image} alt={`Image of the ${pokemon.name} Pokemon`} />
             </div>
             <div className="pokemon--attacks">
                 {pokemon.attacks.special.slice(0, 3).map(attack=>{
