@@ -157,3 +157,25 @@ button:focus-visible {
     animation: logo-spin infinite 20s linear;
   }
 }
+
+@media (max-width: 800px) {
+  .pokemon {
+      width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .pokemon--attacks, .pokemon--meta {
+      flex-wrap: wrap;
+  }
+  
+  .pokemon--meta span,
+  .pokemon--attacks span,
+  .pokemon {
+      width: 100%;
+  }
+  
+  .pokemon--meta span {
+      margin-bottom: 10px;
+  }
+}
