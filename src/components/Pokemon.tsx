@@ -1,4 +1,18 @@
-import { PokemonType } from "../App";
+export type PokemonType = {
+    pokemon: {
+        id: string,
+        name: string
+        image: string,
+        maxHP: number,
+        maxCP: number,
+        attacks: {
+          special: {     //{pokemon} = props: 
+            name: string,
+            damage: number
+          }[]
+        }
+    }
+  }
 
 export default function Pokemon({pokemon}: PokemonType){
     return (
