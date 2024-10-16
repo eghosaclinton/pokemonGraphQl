@@ -1,5 +1,5 @@
 import Pokemon from "../components/Pokemon";
-import FallBack from "../components/Fallback.tsx";
+import pokeLoader from '../assets/pokemon_121114.svg'
 import { useGetPokemons } from "../gql/get-pokemons";
 
 type PokeType = {    
@@ -14,6 +14,17 @@ type PokeType = {
         damage: number
       }[]
     }
+}
+
+function FallBack(){
+    return (
+        <div className='loader-parent'>
+            <div className='loader' >
+                <img src={pokeLoader} alt="Pokeball image loader" />
+            </div>
+            <h3>Loading...</h3>            
+        </div>
+    )
 }
 
 
