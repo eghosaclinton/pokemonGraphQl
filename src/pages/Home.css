@@ -1,0 +1,39 @@
+.homeContainer{
+    border: solid 1px black;
+    border-radius: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    max-width: 780px;
+}
+
+form{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.numPokemon{
+    display: flex;
+    flex-direction: column;
+}
+
+.note{
+    font-size: .75rem;
+}
+
+.numPokemon > input{
+    width: 40%;
+    padding: 1rem;
+}
+
+.onePokemon{
+    display: flex;
+    flex-direction: column;
+}
+
+.onePokemon > input{
+    width: 70%;
+    padding: 1rem;
+}

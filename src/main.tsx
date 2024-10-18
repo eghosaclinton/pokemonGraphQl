@@ -1,5 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import { PokeContext } from './context/myContext.tsx'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client' 
 import App from './App.tsx'
 import './index.css'
@@ -11,8 +13,12 @@ const client = new ApolloClient({
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ApolloProvider client={client}>
-      <App/>
-    </ApolloProvider>
+    <BrowserRouter>
+      <PokeContext>
+        <ApolloProvider client={client}>
+          <App/>
+        </ApolloProvider>
+      </PokeContext>
+    </BrowserRouter>
   </StrictMode>,
 )

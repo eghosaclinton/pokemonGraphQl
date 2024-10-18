@@ -1,6 +1,6 @@
 import Pokemon from "../components/Pokemon";
 import pokeLoader from '../assets/pokemon_121114.svg'
-import { useGetPokemons } from "../gql/get-pokemons";
+import { useGetPokemons, useGetPokeCard } from "../hooks/get-pokemons";
 
 type PokeType = {    
     id: string,
@@ -28,9 +28,9 @@ function FallBack(){
 }
 
 
-export default function PokemonContainer(){
-    const { data, loading, error } = useGetPokemons();
-    console.log(error)
+export function PokeCards({ fetchData }){
+    const { data, loading, error } = useGetPokemons(fetchData);
+    console.log(error);
 
     return (
         <div className="container">
@@ -40,3 +40,14 @@ export default function PokemonContainer(){
         </div>
     );
 }
+
+// export function PokeCard({ fetchData }: {fetchData: string }){
+//     const { data, loading, error } = useGetPokeCard(fetchData);
+
+//     return (
+//         <div className="container">
+//             { !loading ? (<Pokemon key={data.pokemon.id} pokemon={data.pokemon} />)
+//             : (<FallBack />) }
+//         </div>
+//     );
+// }
