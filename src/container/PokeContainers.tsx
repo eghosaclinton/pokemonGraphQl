@@ -1,5 +1,6 @@
 import Pokemon from "../components/Pokemon";
 import pikaConfused from "../assets/pika-confuse.png"
+import funnyPika from "../assets/funny-pika.png"
 import pokeLoader from '../assets/pokemon_121114.svg'
 import { useGetPokemons, useGetPokeCard } from "../hooks/get-pokemons";
 
@@ -37,10 +38,17 @@ function ErrorComponent(){
     );
 }
 
+function NotExist(){
+    return (
+    <div className="notExist">
+        <img src={funnyPika} alt="an image of...an odd Pikachu" />
+        <h4>no such thing lad</h4>
+    </div>
+    );
+}
 
 export function PokeCards({ fetchData, isDisplayed }){
     const { data, loading, error } = useGetPokemons(fetchData);
-    // console.log(error);
 
     const style={
         display: isDisplayed ? "block":"none"
@@ -64,21 +72,19 @@ export function PokeCards({ fetchData, isDisplayed }){
 
 export function PokeCard({ fetchData, isDisplayed }){
     const { data, loading, error } = useGetPokeCard(fetchData);
-    console.log(data)
 
     const style={
         display: isDisplayed ? "block":"none"
     }
+
     return (
-        <div className="pokee" style={style}>
+        <div className="pokecard" style={style}>
         {error ? (<ErrorComponent />):(
         <div className="mainContainer">
-            <h2>Your Fav PokeCard is
-                 {/* {!loading && data.pokemon?"":"..."}{fetchData}{!loading && data.pokemon?"":"?"}!! */}
-            </h2>
+            <h2>Your Fav PokeCard is...{!loading && data.pokemon ? `${data.pokemon.name}!!`:`${fetchData}??`}</h2>
             <div className="container">
 
-                { !loading ? (data.pokemon?(<Pokemon pokemon={data.pokemon} />):<h3>no such thing lad</h3>)
+                { !loading ? (data.pokemon?(<Pokemon pokemon={data.pokemon} />):<NotExist />)
                 : (<FallBack />) }
             </div>
         </div>)}

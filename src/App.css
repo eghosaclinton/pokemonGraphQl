@@ -46,7 +46,6 @@ a {
 .container {
   display: flex;
   padding: 1rem 0;
-  /* flex-direction: column; */
   max-width: 550px;
   margin: auto;
   flex-wrap: wrap;
@@ -99,14 +98,18 @@ a {
   display: flex;
   padding-left: 10px;
   padding-right: 10px;
+  gap: .25rem;
   justify-content: space-between;
 }
 
 .pokemon--attacks span {
-  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
   background-color: #f16820;
   border-radius: 3px;
-  padding: 7px;
+  padding: .5rem;
   font-weight: 700;
   color: #fff;
   padding-left: 10px;

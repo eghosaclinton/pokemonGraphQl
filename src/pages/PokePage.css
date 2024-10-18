@@ -5,13 +5,13 @@
     gap: 1.5rem;
 }
 
-.pokee{
+.pokee, .pokecard{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.errorFetch{
+.errorFetch, .notExist{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +20,7 @@
     margin: 0 auto;
 }
 
-.errorFetch > img{
+.errorFetch > img, .notExist > img{
     width: 40%;
 }
 
@@ -33,4 +33,17 @@
 
 .navBtns > button{
     transform: none;
+}
+
+.pokee .pokemon{
+    min-width: 275px;
+}
+
+.pokecard .pokemon{
+    margin: 0 auto;
+    min-width: 275px;
+}
+
+.pokee h2, .pokecard h2{
+    text-align: center;
 }
