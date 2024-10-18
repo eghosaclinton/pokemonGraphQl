@@ -16,7 +16,9 @@ export type PokemonType = {
 
 export default function Pokemon({pokemon}: PokemonType){
     return (
+        
         <div className="pokemon">
+            
             <div className="pokemon--name">
                 <h3 className="bruh">{pokemon.name}</h3>
             </div>

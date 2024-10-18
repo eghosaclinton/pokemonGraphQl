@@ -3,11 +3,6 @@ import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useGetContext } from '../context/myContext'
 
-// type stateType= {
-//     numOfPokemons: number,
-//     nameOfPokemon: string
-// }
-
 export default function Home(){
 
     const navigate = useNavigate();
@@ -31,7 +26,8 @@ export default function Home(){
 
     function handleSubmit(e: FormEvent): void{
         e.preventDefault();
-        navigate('/pokecards')
+        setFetchData(formData);
+        navigate('/pokecards');
     }
 
     return (

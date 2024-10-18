@@ -1,9 +1,8 @@
 import './App.css'
 import pokeImg from './assets/pokeball.png'
 import Home from './pages/Home'
-import { useGetContext } from './context/myContext'
 import { Routes, Link, Route } from 'react-router-dom'
-import PokeCardsPage from './pages/PokeCards'
+import PokePage from './pages/PokePage'
 
 function App() {
 
@@ -17,7 +16,7 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/pokecards' element={<PokeCardsPage />} />
+          <Route path='/pokecards' element={<PokePage />} />
         </Routes>
       </main>
     </>    

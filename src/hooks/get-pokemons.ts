@@ -27,11 +27,11 @@ export function useGetPokemons(num: number){
     }
 }
 
-export function useGetPokeCard(name: string = ''){
+export function useGetPokeCard(name: string ){
   
   const GET_POKEMON = gql`
   query Query{
-    pokemon(name: ${name}){
+    pokemon(name: "${name}"){
 		  id
       name
       image
@@ -47,9 +47,13 @@ export function useGetPokeCard(name: string = ''){
   }
   `
   const { error, loading, data } = useQuery(GET_POKEMON)
+
   return {
       error,
       data,
       loading
   }
 }
+
+//graphql returns null if the data variable is not available
+//  in db, and returns error if it fails to connect to api(internet issue)
