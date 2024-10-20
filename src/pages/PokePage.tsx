@@ -2,25 +2,34 @@ import { useState, useEffect } from "react";
 import './PokePage.css'
 import {PokeCard, PokeCards} from "../container/PokeContainers";
 import { useGetContext } from "../context/myContext";
-// import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 export default function PokeCardsPage(){
     const { fetchData, setFetchData } = useGetContext();
 
-    // const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams()
 
     const [displayPokeCards, setDisplayPokecards]=useState(true)
     const [displayFavPokeCard, setDisplayFavPokecard]=useState(false)
 
-    // useEffect(()=>{
-    //     if (!(searchParams.get('pokeName') && searchParams.get('pokeName'))){
-    //         setSearchParams(fetchData);   
-    //     } 
-    //     setFetchData({
-    //         pokeNum: searchParams.get('pokeNum'),
-    //         pokeName: searchParams.get('pokeName')
-    //     })
-    // }, [fetchData, setFetchData, setSearchParams, searchParams])
+    useEffect(() => {
+        if (fetchData.pokeName !== 'Pikachu') {
+          setSearchParams(fetchData);
+        }
+    }, [fetchData, setSearchParams]);
+
+      
+      useEffect(() => {
+        const stateFromParams = {
+            pokeNum: searchParams.get('pokeNum'),
+            pokeName: searchParams.get('pokeName')
+        }        
+
+    
+        if (fetchData.pokeName == 'Pikachu'){
+            setFetchData(stateFromParams);
+        }
+      }, [searchParams, setFetchData, fetchData]);
 
     return (
         <div className="result--page"> 

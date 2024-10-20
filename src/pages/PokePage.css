@@ -47,3 +47,21 @@
 .pokee h2, .pokecard h2{
     text-align: center;
 }
+
+.loader-parent{
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .loader-parent h3 {
+    text-align: center;
+  }
+  
+  .loader{
+    margin: 0 auto;
+    width: 20%;
+  }
+  
+  .loader img{
+    width: 100%;
+  }

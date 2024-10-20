@@ -138,19 +138,7 @@ a {
   border-radius: 5px;
 }
 
-.loader-parent{
-  width: 100%;
-  margin: 0 auto;
-}
 
-.loader{
-  margin: 0 auto;
-  width: 20%;
-}
-
-.loader img{
-  width: 100%;
-}
 
 
 button {
