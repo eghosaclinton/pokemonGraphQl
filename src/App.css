@@ -17,6 +17,9 @@
   align-items: center;
   justify-content: center;
   color: black;
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-decoration: none;
   text-decoration: none;
 }
 
@@ -25,12 +28,6 @@
   max-width: 2.75rem;
   width: 12.5%;
   min-width: .875rem;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  text-decoration: none;
 }
 
 .container {

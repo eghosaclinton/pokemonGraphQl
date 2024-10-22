@@ -10,7 +10,7 @@ function App() {
     <>
       <header>
         <Link to={'/'}>
-          <h1  className='icon'>P<img src={pokeImg} alt="" />keCards</h1>
+          <div className='icon'>P<img src={pokeImg} alt="" />keCards</div>
         </Link>
       </header>
       <main>
