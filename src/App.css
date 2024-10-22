@@ -6,11 +6,11 @@
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
-  /* text-align: center; */
 }
 
 .or{
   font-family: "Press Start 2P", system-ui;
+  width: fit-content;
 }
 
 .icon{
@@ -19,13 +19,13 @@
   justify-content: center;
   color: black;
   text-decoration: none;
-
 }
 
 .icon > img{
   align-self: flex-end;
   max-width: 2.75rem;
-  width: 10%;
+  width: 12.5%;
+  min-width: .875rem;
 }
 
 h1 {
@@ -98,15 +98,16 @@ a {
   display: flex;
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 10px;
   gap: .25rem;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .pokemon--attacks span {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;
+  width: 33%;
   background-color: #f16820;
   border-radius: 3px;
   padding: .5rem;
@@ -130,6 +131,7 @@ a {
 
 .pokemon--meta span {
   color: white;
+  width: 33%;
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
   background-color: #7bb7b7;
   font-weight: bold;
@@ -190,7 +192,7 @@ button:focus-visible {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 800px) and (min-width:400px) {
 
   .container{
     flex-direction: column;
@@ -198,12 +200,16 @@ button:focus-visible {
   }
 
   .pokemon {
-      width: 95.5%;
+      width: 100%;
       margin: 0 auto;
   }
 }
 
 @media (max-width: 400px) {
+
+  .or{
+    font-size: 1.25rem;
+  }
 
   .pokemon--attacks{
       flex-direction: column;

@@ -65,7 +65,7 @@ export default function Home(){
                         Number of Pokemons can only be 1 to 151 
                     </p>
                 </div>
-                <h2 className='or'>----OR----</h2>
+                <h2 className='or'>---OR---</h2>
                 <div className="onePokemon">
                     <label htmlFor="onePoke">
                         Pick your fav PokeCard:

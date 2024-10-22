@@ -1,8 +1,8 @@
 .homeContainer{
+    font-family: "VT323" , monospace;
     border: solid 1px black;
-    /* box-shadow: 1rem black ; */
     border-radius: 1rem;
-    width: 100%;
+    width: 90%;
     margin: 0 auto;
     padding: 1rem;
     max-width: 780px;
@@ -17,6 +17,7 @@ form{
 
 .numPokemon{
     display: flex;
+    gap: .625rem;
     flex-direction: column;
 }
 
@@ -25,8 +26,10 @@ form{
 }
 
 .numPokemon > input{
-    width: 40%;
-    padding: 1rem;
+    font-family: "VT323" , monospace;
+    width: 90%;
+    max-width: 175px;
+    padding: .75rem .625rem;
 }
 
 .warning{
@@ -44,10 +47,13 @@ form{
 
 .onePokemon{
     display: flex;
+    gap: .625rem;
     flex-direction: column;
 }
 
 .onePokemon > input{
-    width: 70%;
-    padding: 1rem;
+    font-family: "VT323" , monospace;
+    width: 90%;
+    max-width: 175px;
+    padding: .75rem .625rem;
 }
