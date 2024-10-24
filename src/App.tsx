@@ -8,11 +8,11 @@ function App() {
 
   return (
     <>
-      <div>
+      <header>
         <Link to={'/'}>
-          <h1 className='icon'>P<img src={pokeImg} alt="" />keCards</h1>
+          <h1 className='icon'>P<img src={pokeImg} alt="pokecards Icon" />keCards</h1>
         </Link>
-      </div>
+      </header>
       <main>
         <Routes>
           <Route path='/' element={<Home />} />

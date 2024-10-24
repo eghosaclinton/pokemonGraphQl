@@ -5,22 +5,21 @@ import { useGetContext } from '../context/myContext'
 import warningImg from '../assets/warning-circle-svgrepo-com.svg'
 
 export default function Home(){
-
-    const navigate = useNavigate();
-
-    const { setFetchData } = useGetContext();
-
     const [formData, setFormData] = useState({
         pokeNum: '',
         pokeName: ''
     })
-    const [formValid, setFormValid] = useState(true)
-    const [btnValid, setBtnValid] = useState(false)
+    const [isFormValid, setIsFormValid] = useState(true)
+    const [isBtnValid, setIsBtnValid] = useState(false)
 
-    function handleChange(target: HTMLInputElement){
-        const { value, name } = target
+    const { setFetchData } = useGetContext();
+    const navigatePageTo = useNavigate();
 
-        if (name == 'pokeNum' && Number.isNaN(parseInt(value)) && value !== '') return;
+    function changeEventHandler(target: HTMLInputElement){
+        const { value, name } = target;
+        const isNotNumber = (name == 'pokeNum' && Number.isNaN(parseInt(value)) && value !== '')
+        
+        if (isNotNumber) return;
         
         setFormData((prev)=>{
             return {
@@ -31,36 +30,43 @@ export default function Home(){
 
     }
 
-    function handleSubmit(e: FormEvent): void{
+    function submitEventHandler(e: FormEvent): void{
         e.preventDefault();
         setFetchData(formData);
-        navigate('/pokecards');
+        navigatePageTo('/pokecards');
     }
 
-    function inputValidation(target: HTMLInputElement){
+    function pokeNumValidation(target: HTMLInputElement){
         target.onkeyup = function(){
             const value: number = parseInt(target.value)
-            console.log(value)
              
-            if (value > 151 || value < 1){
-                setFormValid(false)
-                setBtnValid(false)
+            if (value > 151 || value < 1 || Number.isNaN(value)){
+                setIsFormValid(false)
+                setIsBtnValid(false)
             }else{
-                 setFormValid(true)
-                 setBtnValid(true)
+                console.log('changed')
+                 setIsFormValid(true)
+                 setIsBtnValid(true)
             }             
         }
     }
+
+    function allowKeyBoardSubmit(keyEvent: React.KeyboardEvent<HTMLFormElement>){
+        if (!isBtnValid && keyEvent.key === 'Enter'){
+            keyEvent.preventDefault()
+        }
+    }
+
     return (
         <div className='homeContainer'>
-            <form className="" onSubmit={handleSubmit}>
+            <form className="" onSubmit={submitEventHandler} onKeyDown={(e)=>allowKeyBoardSubmit(e)}>
                 <div className="numPokemon">
                     <label htmlFor="numPoke">
                         Just how may PokeCards do you want?
                         <span className="note"> (the first <i>n</i> pokemons called from the GrapQL api)</span>
                     </label>
-                    <input value={formData.pokeNum}  onFocus={(e)=>inputValidation(e.target)} onChange={(e)=>handleChange(e.target)} name='pokeNum' type='tel' placeholder="Number of PokeCards" id="numPoke" />
-                    <p className='warning' style={{display: formValid ?"none" : "flex"}}>
+                    <input value={formData.pokeNum}  onFocus={(e)=>pokeNumValidation(e.target)} onChange={(e)=>changeEventHandler(e.target)} name='pokeNum' type='tel' placeholder="Number of PokeCards" id="numPoke" />
+                    <p className='warning' style={{display: isFormValid ?"none" : "flex"}}>
                         <img src={warningImg} alt='a warning icon' />
                         Number of Pokemons can only be 1 to 151 
                     </p>
@@ -70,10 +76,10 @@ export default function Home(){
                     <label htmlFor="onePoke">
                         Pick your fav PokeCard:
                     </label>
-                    <input onChange={(e)=>handleChange(e.target)} value={formData.pokeName} name='pokeName' type="text" placeholder="Enter Pokemon's name" id="onePoke" />
+                    <input onChange={(e)=>changeEventHandler(e.target)} value={formData.pokeName} name='pokeName' type="text" placeholder="Enter Pokemon's name" id="onePoke" />
                 </div>
 
-                <button style={{opacity: (btnValid) ? '1' : '.5', pointerEvents: btnValid ? 'auto' : 'none'}}>I choose you!</button>
+                <button style={{opacity: (isBtnValid) ? '1' : '.5', pointerEvents: isBtnValid ? 'auto' : 'none'}}>I choose you!</button>
             </form>
         </div>
     )
