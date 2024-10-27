@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import './PokePage.css'
 import {PokeCard, PokeCards} from "../container/PokeContainers";
-import { useGetContext } from "../context/myContext";
+import { useGetContext } from "../context/contextUtils";
 import { useSearchParams } from "react-router-dom";
 
 export default function PokeCardsPage(){
@@ -15,6 +15,7 @@ export default function PokeCardsPage(){
     useEffect(() => {
 
         if (fetchData.pokeName !== 'Pikachu') {
+            // @ts-expect-error => type FetchData works as well so... 
           setSearchParams(fetchData);
         }
 
@@ -24,15 +25,18 @@ export default function PokeCardsPage(){
     useEffect(() => {
         
         const stateFromParams = {
-            pokeNum: searchParams.get('pokeNum'),
-            pokeName: searchParams.get('pokeName')
+            pokeNum: String(searchParams.get('pokeNum')),
+            pokeName: String(searchParams.get('pokeName'))
         }        
     
         if (fetchData.pokeName == 'Pikachu'){
-            setFetchData(stateFromParams);
+            setFetchData({
+                ...stateFromParams,
+                pokeNum: parseInt(stateFromParams.pokeNum),
+            });
         }
 
-      }, [searchParams, setFetchData, fetchData]);
+    }, [searchParams, setFetchData, fetchData]);
 
     return (
         <div className="result--page"> 

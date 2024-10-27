@@ -1,31 +1,20 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
+import { ContextType } from "../types/mytypes";
 
-type ContextType={
-    fetchData: {
-        pokeNum: number,
-        pokeName: string
-    }
-}
 
-const MyPokeContext= createContext<ContextType|undefined>(undefined)
+export const MyPokeContext= createContext<ContextType | undefined>(undefined)
 
-export function PokeContext({ children }){
+export function PokeContext({ children }: {children: React.ReactNode}){
     const [fetchData, setFetchData] = useState({
         pokeNum: 1,
         pokeName:'Pikachu'
     })
 
-    const value = {fetchData, setFetchData}
+    const value: ContextType = {fetchData, setFetchData}
 
     return (
         <MyPokeContext.Provider value={value}>
             {children}
         </MyPokeContext.Provider>
     )
-}
-
-export function useGetContext(){
-    const { fetchData, setFetchData } = useContext(MyPokeContext)
-
-    return { fetchData, setFetchData }
 }

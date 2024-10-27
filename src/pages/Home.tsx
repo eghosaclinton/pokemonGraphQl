@@ -1,7 +1,8 @@
 import './Home.css'
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useGetContext } from '../context/myContext'
+import { type FetchData } from '../types/mytypes'
+import { useGetContext } from '../context/contextUtils'
 import warningImg from '../assets/warning-circle-svgrepo-com.svg'
 
 export default function Home(){
@@ -32,19 +33,22 @@ export default function Home(){
 
     function submitEventHandler(e: FormEvent): void{
         e.preventDefault();
-        setFetchData(formData);
+        const newData: FetchData = {
+            ...formData,
+            pokeNum: parseInt(formData.pokeNum)
+        }
+        setFetchData(newData);
         navigatePageTo('/pokecards');
     }
 
     function pokeNumValidation(target: HTMLInputElement){
         target.onkeyup = function(){
-            const value: number = parseInt(target.value)
+            const value = parseInt(target.value)
              
             if (value > 151 || value < 1 || Number.isNaN(value)){
                 setIsFormValid(false)
                 setIsBtnValid(false)
             }else{
-                console.log('changed')
                  setIsFormValid(true)
                  setIsBtnValid(true)
             }             

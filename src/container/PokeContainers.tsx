@@ -21,7 +21,7 @@ type PokeType = {
 function FallBack(){
     return (
         <div className='loader-parent'>
-            <div className='loader' >
+            <div className = 'loader'>
                 <img src={pokeLoader} alt="Pokeball image loader" />
             </div>
             <h3>Loading...</h3>            
@@ -47,7 +47,7 @@ function NotExist(){
     );
 }
 
-export function PokeCards({ fetchData, isDisplayed }){
+export function PokeCards({ fetchData, isDisplayed }: {fetchData: number, isDisplayed: boolean}){
     const { data, loading, error } = useGetPokemons(fetchData);
 
     const style={
@@ -70,7 +70,7 @@ export function PokeCards({ fetchData, isDisplayed }){
     );
 }
 
-export function PokeCard({ fetchData, isDisplayed }){
+export function PokeCard({ fetchData, isDisplayed }: {fetchData: string, isDisplayed: boolean}){
     const { data, loading, error } = useGetPokeCard(fetchData);
 
     const style={
